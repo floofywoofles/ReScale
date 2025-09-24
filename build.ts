@@ -30,7 +30,7 @@ exec("chmod +x ./build/rescale", error => {
     }
 });
 
-if (process.platform === "darwin") {
+if (process.platform === "darwin" || process.platform === "linux") {
     exec("strip ./build/rescale", error => {
         if (error) {
             console.error(error);
@@ -40,7 +40,7 @@ if (process.platform === "darwin") {
 }
 
 // Check if platform is macOS
-if (process.platform === "darwin") {
+if (process.platform === "darwin" && process.platform === "linux") {
     exec("upx --best --lzma --force-macos ./build/rescale", error => {
         if (error) {
             console.error(error);
